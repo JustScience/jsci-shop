@@ -9,15 +9,15 @@ module.exports = {
     {
       resolve: "gatsby-source-shopify",
       options: {
-        shopName: process.env.SHOPIFY_STORE_NAME,
-        accessToken: process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN,
+        shopName: process.env.GATSBY_SHOPIFY_STORE_NAME,
+        accessToken: process.env.GATSBY_SHOPIFY_STOREFRONT_ACCESS_TOKEN,
       },
     },
     "gatsby-plugin-styled-components",
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: process.env.GOOGLE_TRACKING_ID,
+        trackingId: process.env.GATSBY_GOOGLE_TRACKING_ID,
       },
     },
     "gatsby-plugin-sharp",
