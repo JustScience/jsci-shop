@@ -1,3 +1,6 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 module.exports = {
   siteMetadata: {
     title: "jsci-shop",
@@ -6,15 +9,15 @@ module.exports = {
     {
       resolve: "gatsby-source-shopify",
       options: {
-        shopName: "jsci-test",
-        accessToken: "e5f87a25196a3c5b56862f2e3c92577f",
+        shopName: process.env.SHOPIFY_STORE_NAME,
+        accessToken: process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN,
       },
     },
     "gatsby-plugin-styled-components",
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
-        trackingId: "UA-38710149-3",
+        trackingId: process.env.GOOGLE_TRACKING_ID,
       },
     },
     "gatsby-plugin-sharp",
