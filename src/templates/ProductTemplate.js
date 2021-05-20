@@ -1,6 +1,6 @@
 import React from 'react'
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { graphql } from 'gatsby'
+import ProductImageGallery from './ProductImageGallery'
 
 export const query = graphql`
     query ProductQuery($shopifyId: String) {
@@ -8,9 +8,10 @@ export const query = graphql`
             title
             description
             images {
+                id
                 localFile {
                     childImageSharp {
-                        gatsbyImageData(width:300)
+                        gatsbyImageData(width:240, height:240)
                     }
                 }
             }
@@ -20,13 +21,13 @@ export const query = graphql`
 
 export default function ProductTemplate({data}) {
     const { title, description } = data.product
-    const image = getImage(data.product.images[0].localFile)
-    console.log(data)
+    const images = data.product.images
+
     return (
         <div>
             <h1>{title}</h1>
             <p>{description}</p>
-            <GatsbyImage image={image} alt="product shot" />
+            <ProductImageGallery images={images} />
         </div>
     )
 }
