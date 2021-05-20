@@ -22,9 +22,9 @@ module.exports = {
     },
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
-    "gatsby-plugin-react-helmet",
-    "gatsby-plugin-sitemap",
-    "gatsby-plugin-offline",
+    // "gatsby-plugin-react-helmet",
+    // "gatsby-plugin-sitemap",
+    // "gatsby-plugin-offline",
     {
       resolve: "gatsby-plugin-manifest",
       options: {
