@@ -14,6 +14,7 @@ module.exports = {
       },
     },
     "gatsby-plugin-styled-components",
+    "gatsby-optional-chaining",
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {

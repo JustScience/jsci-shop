@@ -1,7 +1,10 @@
+/* eslint-disable jsx-a11y/no-onchange */
 import React from 'react'
 import { graphql } from 'gatsby'
 import ProductImageGallery from './ProductImageGallery'
 import CartContext from '../context/CartContext'
+import ProductQuantityAdder from '../components/ProductQuantityAdder'
+import Layout from '../components/Layout'
 
 export const query = graphql`
     query ProductQuery($shopifyId: String) {
@@ -37,34 +40,42 @@ export default function ProductTemplate({data}) {
     },[getProductById, shopifyId, setProduct])
 
     const handleVariantChange = (e) => {
-        setSelectedVariant(product && product.variants.find(v => v.id === e.target.value))
+        setSelectedVariant(product?.variants.find(v => v.id === e.target.value))
     }
 
     return (
-        <div>
-            <h1>{title}</h1>
-            <p>{description}</p>
-            {product && product.availableForSale &&
-                <>
-                    <strong>File Types: </strong>
-                    <select onBlur={handleVariantChange}>
-                        {product && product.variants.map(v => (
-                            <option 
-                                key={v.id}
-                                value={v.id}
-                            >
-                                {v.title}
-                            </option>
-                        ))}
-                    </select>
-                    {!!selectedVariant && 
-                        <div>
-                            <span>$</span>{selectedVariant.price}
-                        </div>
-                    }
-                </>
-            }
-            <ProductImageGallery images={images} />
-        </div>
+        <Layout>
+            <div>
+                <h1>{title}</h1>
+                <p>{description}</p>
+                {product?.availableForSale &&
+                    <>
+                        {product?.variants.length > 1 &&
+                        <select onChange={handleVariantChange}>
+                            File Types: 
+                            {product?.variants.map(v => (
+                                <option 
+                                    key={v.id}
+                                    value={v.id}
+                                >
+                                    {v.title}
+                                </option>
+                            ))}
+                        </select>
+                        }
+                        {!!selectedVariant && 
+                            <>
+                                <span>$</span>{selectedVariant.price}
+                                <ProductQuantityAdder 
+                                    available={selectedVariant.available}
+                                    variantId={selectedVariant.id} 
+                                />
+                            </>
+                        }
+                    </>
+                }
+                <ProductImageGallery images={images} />
+            </div>
+        </Layout>
     )
 }
