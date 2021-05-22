@@ -23,7 +23,24 @@ const query = graphql`
       edges {
         node {
           products {
-            ...ShopifyProductFields
+            shopifyId
+            handle
+            title
+            description
+            images {
+                id
+                localFile {
+                    childImageSharp {
+                        gatsbyImageData(width:240, height:240)
+                    }
+                }
+            }
+            priceRange {
+                minVariantPrice {
+                    amount
+                }
+            }
+            # ...ShopifyProductFields
             # ...ProductTileFields
           }
           title
