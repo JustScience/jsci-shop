@@ -7,7 +7,7 @@ export default function QuantityAdjuster({item, onAdjust}) {
     const {quantity} = item
 
     const handleDecrementQuantity = () => {
-        onAdjust({variantId: item.vairant.id, quantity: -1})
+        onAdjust({variantId: item.variant.id, quantity: -1})
     }
     const handleIncrementQuantity = () => {
         onAdjust({variantId: item.variant.id, quantity: 1})

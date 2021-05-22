@@ -45,7 +45,7 @@ export default function CartContents() {
                         $ {(item.quantity * item.variant.price).toFixed(2)}
                     </div>
                     <div>
-                        <RemoveLineItem />
+                        <RemoveLineItem lineItemId={item.id} />
                     </div>
                 </CartItem>
             ))}
