@@ -2,16 +2,16 @@ import React from 'react'
 import CollectionTile from './CollectionTile'
 
 export default function HomepageCollectionsGrid({collections}) {
-    const featuredCollection = collections.find(collection => collection.title === "Featured")
-    const standardCollections = collections.filter(collection => collection.title !== "Featured")
+    const dealsCollection = collections.find(collection => collection.title === "Deals")
+    const standardCollections = collections.filter(collection => collection.title !== "Deals" && collection.title !== "Featured")
 
     return (
         <div>
-            {!!featuredCollection && (
+            {!!dealsCollection && (
                 <CollectionTile 
-                    title={featuredCollection.title}
-                    description={featuredCollection.description}
-                    image={featuredCollection.image}
+                    title={dealsCollection.title}
+                    description={dealsCollection.description}
+                    image={dealsCollection.image}
                 />
             )}
             {standardCollections.map(collection => {
