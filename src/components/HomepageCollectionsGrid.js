@@ -3,7 +3,7 @@ import CollectionTile from './CollectionTile'
 
 export default function HomepageCollectionsGrid({collections}) {
     const dealsCollection = collections.find(collection => collection.title === "Deals")
-    const standardCollections = collections.filter(collection => collection.title !== "Deals" && collection.title !== "Featured")
+    const standardCollections = collections.filter(collection => collection.title !== "Deals")
 
     return (
         <div>
