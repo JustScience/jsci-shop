@@ -10,9 +10,9 @@ const IndexPage = () => {
   return (
     <Layout>
       <HomepageCollectionsGrid collections={collections} />
-      {!!collections.find(collection => collection.title === "Featured" ) &&
+      {/* {!!collections.find(collection => collection.title === "Featured" ) && */}
         <FeaturedProducts />      
-      }
+      {/* } */}
     </Layout>
   )
 }
