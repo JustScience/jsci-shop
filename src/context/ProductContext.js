@@ -2,23 +2,23 @@ import React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 
 const query = graphql`
-  # fragment ProductTileFields on ShopifyProduct {
-  #   handle
-  #   priceRange {
-  #     minVariantPrice {
-  #       amount
-  #     }
-  #   }
-  # }
+  fragment ProductTileFields on ShopifyProduct {
+    handle
+    priceRange {
+      minVariantPrice {
+        amount
+      }
+    }
+  }
   {
-    # allShopifyProduct {
-    #   edges {
-    #     node {
-    #       ...ShopifyProductFields
-    #       ...ProductTileFields
-    #     }
-    #   }
-    # }
+    allShopifyProduct {
+      edges {
+        node {
+          ...ShopifyProductFields
+          ...ProductTileFields
+        }
+      }
+    }
     allShopifyCollection(sort: { fields: title, order: ASC }) {
       edges {
         node {
@@ -72,7 +72,7 @@ export function ProductContextProvider({ children }) {
   return (
     <ProductContext.Provider
       value={{
-        // products: allShopifyProduct.edges.map(({ node }) => node) || [],
+        products: allShopifyProduct.edges.map(({ node }) => node) || [],
         collections: allShopifyCollection.edges.map(({ node }) => node) || [],
       }}
     >
