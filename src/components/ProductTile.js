@@ -7,7 +7,7 @@ const ProductTileWrap = styled.div``
 
 export default function ProductTile({title, description, image, minPrice, handle}) {
     const productImage = getImage(image.localFile)
-    const productLink = '/products/' + {handle}
+    const productLink = '/products/' + handle
     console.log(productImage)
 
     return (
@@ -16,7 +16,7 @@ export default function ProductTile({title, description, image, minPrice, handle
             <div>{title}</div>
             <div>{description}</div>
             <div>from $ {parseFloat(minPrice).toFixed(2)}</div>
-            <Link to={'/products/' + handle}>View Product</Link>
+            <Link to={productLink}>View Product</Link>
         </ProductTileWrap>
     )
 }

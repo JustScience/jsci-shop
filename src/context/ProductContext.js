@@ -10,6 +10,25 @@ const query = graphql`
       }
     }
   }
+  fragment ShopifyProductFields on ShopifyProduct {
+    shopifyId
+    handle
+    title
+    description
+    images {
+        id
+        localFile {
+            childImageSharp {
+                gatsbyImageData(width:240, height:240)
+            }
+        }
+    }
+    priceRange {
+        minVariantPrice {
+            amount
+        }
+    }
+  }
   {
     allShopifyProduct {
       edges {
@@ -23,25 +42,8 @@ const query = graphql`
       edges {
         node {
           products {
-            shopifyId
-            handle
-            title
-            description
-            images {
-                id
-                localFile {
-                    childImageSharp {
-                        gatsbyImageData(width:240, height:240)
-                    }
-                }
-            }
-            priceRange {
-                minVariantPrice {
-                    amount
-                }
-            }
-            # ...ShopifyProductFields
-            # ...ProductTileFields
+            ...ShopifyProductFields
+            ...ProductTileFields
           }
           title
           description
