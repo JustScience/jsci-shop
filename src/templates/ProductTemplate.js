@@ -9,17 +9,7 @@ import Layout from '../components/Layout'
 export const query = graphql`
     query ProductQuery($shopifyId: String) {
         product: shopifyProduct(shopifyId: {eq: $shopifyId}) {
-            shopifyId
-            title
-            description
-            images {
-                id
-                localFile {
-                    childImageSharp {
-                        gatsbyImageData(width:240, height:240)
-                    }
-                }
-            }
+            ...ShopifyProductFields
         }
     }
 `;
